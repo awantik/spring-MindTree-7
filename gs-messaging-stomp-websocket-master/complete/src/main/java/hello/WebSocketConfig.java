@@ -12,17 +12,12 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-    	//Broker Configuration & creation
         config.enableSimpleBroker("/topic");
-        //topic - one guy sends all receives
-        //queue - one to one communication
-        
-        //Configures the app so that it can take messages
         config.setApplicationDestinationPrefixes("/app");
     }
 
-    //Creating end-point for connection
     @Override
+    //Register an end-point at server to receive messages
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/gs-guide-websocket").withSockJS();
     }
